@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import API from "../api/axios";
 import Layout from "../components/Layout";
 import { AuthContext } from "../context/AuthContext";
-import ConfirmModal from "../components/ConfirmModel";
+import ConfirmModal from "../components/ConfirmModal";
 
 const Tasks = () => {
   const { user } = useContext(AuthContext);
@@ -22,18 +22,18 @@ const Tasks = () => {
 
   // ================= FETCH =================
   const fetchTasks = async () => {
-    const res = await API.get("/tasks");
+    const res = await API.get("/api/tasks"); // ✅ FIX
     setTasks(res.data?.data?.tasks || []);
   };
 
   const fetchProjects = async () => {
-    const res = await API.get("/projects");
+    const res = await API.get("/api/projects"); // ✅ FIX
     setProjects(res.data?.data || []);
   };
 
   const fetchAssignableUsers = async (projectId) => {
     try {
-      const res = await API.get(`/projects/${projectId}/members`);
+      const res = await API.get(`/api/projects/${projectId}/members`); // ✅ FIX
       setAssignableUsers(res.data?.data || []);
     } catch {
       setAssignableUsers([]);
@@ -51,7 +51,7 @@ const Tasks = () => {
       return;
     }
 
-    await API.post("/tasks", form);
+    await API.post("/api/tasks", form); // ✅ FIX
 
     setForm({
       title: "",
@@ -62,20 +62,19 @@ const Tasks = () => {
     fetchTasks();
   };
 
-
   const updateStatus = async (id, status) => {
-    await API.put(`/tasks/${id}`, { status });
+    await API.put(`/api/tasks/${id}`, { status }); // ✅ FIX
     fetchTasks();
   };
 
-  // ================= DELETE (NEW SAFE) =================
+  // ================= DELETE =================
   const openDeleteModal = (id) => {
     setSelectedId(id);
     setModalOpen(true);
   };
 
   const confirmDelete = async () => {
-    await API.delete(`/tasks/${selectedId}`);
+    await API.delete(`/api/tasks/${selectedId}`); // ✅ FIX
     fetchTasks();
   };
 
@@ -242,7 +241,6 @@ const Tasks = () => {
         })}
       </div>
 
-      {/* 🔥 MODAL */}
       <ConfirmModal
         open={modalOpen}
         onClose={() => setModalOpen(false)}
