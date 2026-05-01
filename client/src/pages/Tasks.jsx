@@ -22,18 +22,18 @@ const Tasks = () => {
 
   // ================= FETCH =================
   const fetchTasks = async () => {
-    const res = await API.get("/api/tasks"); // ✅ FIX
+    const res = await API.get("/tasks");
     setTasks(res.data?.data?.tasks || []);
   };
 
   const fetchProjects = async () => {
-    const res = await API.get("/api/projects"); // ✅ FIX
+    const res = await API.get("/projects");
     setProjects(res.data?.data || []);
   };
 
   const fetchAssignableUsers = async (projectId) => {
     try {
-      const res = await API.get(`/api/projects/${projectId}/members`); // ✅ FIX
+      const res = await API.get(`/projects/${projectId}/members`); // ✅ FIX
       setAssignableUsers(res.data?.data || []);
     } catch {
       setAssignableUsers([]);
@@ -51,7 +51,7 @@ const Tasks = () => {
       return;
     }
 
-    await API.post("/api/tasks", form); // ✅ FIX
+    await API.post("/tasks", form); 
 
     setForm({
       title: "",
@@ -63,7 +63,7 @@ const Tasks = () => {
   };
 
   const updateStatus = async (id, status) => {
-    await API.put(`/api/tasks/${id}`, { status }); // ✅ FIX
+    await API.put(`/tasks/${id}`, { status }); 
     fetchTasks();
   };
 
@@ -74,7 +74,7 @@ const Tasks = () => {
   };
 
   const confirmDelete = async () => {
-    await API.delete(`/api/tasks/${selectedId}`); // ✅ FIX
+    await API.delete(`/tasks/${selectedId}`); 
     fetchTasks();
   };
 
