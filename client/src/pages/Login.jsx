@@ -24,7 +24,7 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const res = await API.post("/api/auth/login", form); // ✅ FIXED
+      const res = await API.post("/auth/login", form); // ✅ FIXED
       login(res.data.data);
       navigate("/dashboard");
 

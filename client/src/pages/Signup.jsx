@@ -30,7 +30,7 @@ const Signup = () => {
     try {
       setLoading(true);
 
-      const res = await API.post("/api/auth/signup", form);
+      const res = await API.post("/auth/signup", form);
 
       login(res.data.data);
       navigate("/dashboard");
