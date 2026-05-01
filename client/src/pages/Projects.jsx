@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import API from "../api/axios";
 import Layout from "../components/Layout";
 import { AuthContext } from "../context/AuthContext";
-import ConfirmModal from "../components/ConfirmModel";
+import ConfirmModal from "../components/ConfirmModal";
 import EditModal from "../components/EditModal";
 
 const Projects = () => {
