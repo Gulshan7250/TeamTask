@@ -24,7 +24,7 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const res = await API.post("/auth/login", form);
+      const res = await API.post("/api/auth/login", form); // ✅ FIXED
       login(res.data.data);
       navigate("/dashboard");
 
@@ -48,7 +48,6 @@ const Login = () => {
             Login
           </h2>
 
-          {/* 🔥 ERROR MESSAGE */}
           {error && (
             <p className="bg-red-500/10 text-red-400 border border-red-500/20 p-2 rounded text-sm mb-4 text-center">
               {error}
