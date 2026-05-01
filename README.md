@@ -3,8 +3,8 @@
 TeamTask is a full-stack web application designed to help teams manage projects, assign tasks, and track progress efficiently. It provides a clean interface with role-based access control for Admins and Members.
 
 🌐 Live Links
-🔗 Frontend: https://your-frontend-url
-🔗 Backend API: https://your-backend-url
+🔗 Frontend: https://teamtask-production-0508.up.railway.app/login
+🔗 Backend API: https://teamtask-production-5d86.up.railway.app/
 📌 Overview
 
 This application allows users to:
